@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 // @ts-ignore
-import logo from "/images/logoupscaled.png"
+import logo from "/images/logoupscaled.webp"
 
 export function Hero() {
   return (
