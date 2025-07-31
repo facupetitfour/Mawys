@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+// @ts-ignore
+import logo from "/images/logoupscaled.png"
 
 export function Hero() {
   return (
@@ -40,7 +42,7 @@ export function Hero() {
             >
               <div className="relative z-10 p-8  ">
                 <img
-                  src="/images/logoupscaled.png"
+                  src={logo}
                   alt="Mawy's Galletitas Dulces"
                   width={400}
                   height={200}

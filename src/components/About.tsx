@@ -1,5 +1,6 @@
 // import { Button } from "@/components/ui/button"
-
+// @ts-ignore
+import productsCloseup from "/images/products-closeup.png"
 export function About() {
   return (
     <section
@@ -36,7 +37,7 @@ export function About() {
             <div className="relative">
               <div className="relative z-10 rounded-lg overflow-hidden shadow-xl transform rotate-3 border-4 border-white">
                 <img
-                  src="/images/products-closeup.png"
+                  src={productsCloseup}
                   alt="Nuestras galletas"
                   width={500}
                   height={400}

@@ -1,4 +1,7 @@
 import { useTheme } from "@/lib/useTheme"
+// @ts-ignore
+import logo2 from "/images/logo.png"
+
 
 interface NavigationProps {
   activeSection: string
@@ -69,7 +72,7 @@ export function Navigation({ activeSection, setMenuOpen, menuOpen }: NavigationP
       >
         <div className="flex flex-col h-full p-8">
           <div className="text-center mb-8">
-            <img src="/images/logo.png" alt="Mawy's" width={120} height={48} className="mx-auto mb-4" />
+            <img src={logo2} alt="Mawy's" width={120} height={48} className="mx-auto mb-4" />
           </div>
 
           <nav className="flex flex-col space-y-6 flex-1">
