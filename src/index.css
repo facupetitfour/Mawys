@@ -56,4 +56,28 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Optimizaciones para transiciones de tema */
+  html {
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+  }
+  
+  /* Optimizar transiciones en dispositivos móviles */
+  @media (max-width: 768px) {
+    * {
+      transition-duration: 150ms !important;
+    }
+  }
+  
+  /* Mejorar rendimiento de transformaciones */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  /* Optimizar backdrop-blur en móviles */
+  @media (max-width: 768px) {
+    .backdrop-blur-sm {
+      backdrop-filter: none;
+    }
+  }
 }

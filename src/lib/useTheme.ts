@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 type Theme = 'light' | 'dark'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
     // Verificar si hay un tema guardado en localStorage
-    const savedTheme = localStorage.getItem('theme') as Theme
-    if (savedTheme) {
-      return savedTheme
-    }
-    
-    // Verificar preferencia del sistema
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as Theme
+      if (savedTheme) {
+        return savedTheme
+      }
+      
+      // Verificar preferencia del sistema
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      }
     }
     
     return 'light'
@@ -21,19 +23,24 @@ export function useTheme() {
   useEffect(() => {
     const root = window.document.documentElement
     
-    // Remover clases anteriores
-    root.classList.remove('light', 'dark')
+    // Usar requestAnimationFrame para optimizar el cambio de clases
+    requestAnimationFrame(() => {
+      // Remover clases anteriores
+      root.classList.remove('light', 'dark')
+      
+      // Agregar la clase del tema actual
+      root.classList.add(theme)
+    })
     
-    // Agregar la clase del tema actual
-    root.classList.add(theme)
-    
-    // Guardar en localStorage
-    localStorage.setItem('theme', theme)
+    // Guardar en localStorage de forma asíncrona para no bloquear el render
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme)
+    }
   }, [theme])
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
-  }
+  }, [])
 
   return { theme, toggleTheme }
 } 
