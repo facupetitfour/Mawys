@@ -15,10 +15,7 @@ const flavors: Flavor[] = [
 
 export function Flavors() {
   return (
-    <section
-      id="flavors"
-      className="min-h-screen py-20 relative"
-    >
+    <section id="flavors" className="min-h-screen py-20 relative transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Título */}
@@ -26,7 +23,7 @@ export function Flavors() {
             <h2 className="text-5xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300">
               Nuestros Sabores
             </h2>
-            <div className="w-24 h-1 bg-[#E54B4B] mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-[#E54B4B] mx-auto transition-colors duration-300"></div>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
               Descubre nuestra variedad de sabores, cada uno con su personalidad única y elaborado con ingredientes seleccionados.
             </p>
@@ -41,7 +38,7 @@ export function Flavors() {
                   group relative overflow-hidden rounded-2xl
                   text-center py-8 border border-white/50 dark:border-gray-700/50
                   md:hover:shadow-xl md:transition-shadow md:duration-300
-                  bg-white/30 dark:bg-gray-700/20 backdrop-blur-md
+                  bg-white/30 dark:bg-gray-700/20
                   transition-colors duration-300
                 "
               >
@@ -49,7 +46,7 @@ export function Flavors() {
                   <div className="text-6xl mb-4 md:transform md:group-hover:scale-110 md:transition-transform md:duration-300">
                     {flavor.emoji}
                   </div>
-                  <h3 className={`text-2xl font-bold md:transition-colors md:duration-300 ${flavor.textClass}`}>
+                  <h3 className={`text-2xl font-bold transition-colors duration-300 ${flavor.textClass}`}>
                     {flavor.name}
                   </h3>
                 </div>
