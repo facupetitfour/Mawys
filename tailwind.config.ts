@@ -102,6 +102,44 @@ const config = {
           to: { height: "0" },
         },
       },
+      flavors: {
+        coco: {
+          light: '#f8f4e6',
+          dark: '#2c2a25',
+          textLight: '#8B4513',
+          textDark: '#f4d03f'
+        },
+        naranja: {
+          light: '#fff5e6',
+          dark: '#332b21',
+          textLight: '#d35400',
+          textDark: '#f39c12'
+        },
+        vainilla: {
+          light: '#fffef7',
+          dark: '#2a2a26',
+          textLight: '#795548',
+          textDark: '#f7dc6f'
+        },
+        limon: {
+          light: '#f9fbe7',
+          dark: '#1f2018',
+          textLight: '#827717',
+          textDark: '#f1c40f'
+        },
+        banana: {
+          light: '#fffef0',
+          dark: '#2b2a1e',
+          textLight: '#f57f17',
+          textDark: '#f39c12'
+        },
+        miel: {
+          light: '#fff8e1',
+          dark: '#2e271a',
+          textLight: '#e65100',
+          textDark: '#f39c12'
+        }
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
