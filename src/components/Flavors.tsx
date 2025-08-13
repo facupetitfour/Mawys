@@ -1,65 +1,19 @@
 interface Flavor {
   name: string
-  lightColor: string
-  darkColor: string
-  lightTextColor: string
-  darkTextColor: string
   emoji: string
+  textClass: string
 }
 
 const flavors: Flavor[] = [
-  {
-    name: "Coco",
-    lightColor: "#f8f4e6",
-    darkColor: "#2c2a25",
-    lightTextColor: "#8B4513",
-    darkTextColor: "#f4d03f",
-    emoji: "🥥"
-  },
-  {
-    name: "Naranja",
-    lightColor: "#fff5e6",
-    darkColor: "#332b21",
-    lightTextColor: "#d35400",
-    darkTextColor: "#f39c12",
-    emoji: "🍊"
-  },
-  {
-    name: "Vainilla",
-    lightColor: "#fffef7",
-    darkColor: "#2a2a26",
-    lightTextColor: "#795548",
-    darkTextColor: "#f7dc6f",
-    emoji: "🌟"
-  },
-  {
-    name: "Limón",
-    lightColor: "#f9fbe7",
-    darkColor: "#1f2018",
-    lightTextColor: "#827717",
-    darkTextColor: "#f1c40f",
-    emoji: "🍋"
-  },
-  {
-    name: "Banana",
-    lightColor: "#fffef0",
-    darkColor: "#2b2a1e",
-    lightTextColor: "#f57f17",
-    darkTextColor: "#f39c12",
-    emoji: "🍌"
-  },
-  {
-    name: "Miel",
-    lightColor: "#fff8e1",
-    darkColor: "#2e271a",
-    lightTextColor: "#e65100",
-    darkTextColor: "#f39c12",
-    emoji: "🍯"
-  },
+  { name: "Coco", emoji: "🥥", textClass: "text-coco-textLight dark:text-coco-textDark" },
+  { name: "Naranja", emoji: "🍊", textClass: "text-naranja-textLight dark:text-naranja-textDark" },
+  { name: "Vainilla", emoji: "🌟", textClass: "text-vainilla-textLight dark:text-vainilla-textDark" },
+  { name: "Limón", emoji: "🍋", textClass: "text-limon-textLight dark:text-limon-textDark" },
+  { name: "Banana", emoji: "🍌", textClass: "text-banana-textLight dark:text-banana-textDark" },
+  { name: "Miel", emoji: "🍯", textClass: "text-miel-textLight dark:text-miel-textDark" },
 ]
 
 export function Flavors() {
-
   return (
     <section
       id="flavors"
@@ -67,46 +21,46 @@ export function Flavors() {
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
+          {/* Título */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-200">Nuestros Sabores</h2>
+            <h2 className="text-5xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+              Nuestros Sabores
+            </h2>
             <div className="w-24 h-1 bg-[#E54B4B] mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-200">
-              Descubre nuestra variedad de sabores, cada uno con su personalidad única y elaborado con ingredientes
-              seleccionados.
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
+              Descubre nuestra variedad de sabores, cada uno con su personalidad única y elaborado con ingredientes seleccionados.
             </p>
           </div>
 
+          {/* Lista de sabores */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {flavors.map((flavor, index) => (
               <div
                 key={index}
-                className={`
-                  group relative overflow-hidden rounded-2xl transition-all duration-200 hover:shadow-xl
-                  bg-flavors-${flavor.name.toLowerCase()}.light dark:bg-flavors-${flavor.name.toLowerCase()}.dark
-                  text-center py-8 backdrop-blur-sm border border-white/50 dark:border-gray-700/50
-                `}
+                className="
+                  group relative overflow-hidden rounded-2xl
+                  text-center py-8 border border-white/50 dark:border-gray-700/50
+                  md:hover:shadow-xl md:transition-shadow md:duration-300
+                  bg-white/30 dark:bg-gray-700/20 backdrop-blur-md
+                  transition-colors duration-300
+                "
               >
                 <div className="p-6">
-                  <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-200">
+                  <div className="text-6xl mb-4 md:transform md:group-hover:scale-110 md:transition-transform md:duration-300">
                     {flavor.emoji}
                   </div>
-                  <h3
-                    className={`
-                      text-2xl font-bold transition-colors duration-200
-                      text-flavors-${flavor.name.toLowerCase()}.textLight dark:text-flavors-${flavor.name.toLowerCase()}.textDark
-                    `}
-                  >
+                  <h3 className={`text-2xl font-bold md:transition-colors md:duration-300 ${flavor.textClass}`}>
                     {flavor.name}
                   </h3>
                 </div>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#E54B4B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="md:absolute md:bottom-0 md:left-0 md:w-full md:h-1 md:bg-[#E54B4B] md:transform md:scale-x-0 md:group-hover:scale-x-100 md:transition-transform md:duration-300 md:origin-left"></div>
               </div>
-
             ))}
           </div>
 
+          {/* Texto final */}
           <div className="mt-12 text-center">
-            <p className="text-lg text-gray-600 dark:text-gray-300 transition-colors duration-200">
+            <p className="text-lg text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Todos nuestros productos están disponibles en presentaciones de 750gr y 3kg
             </p>
           </div>
@@ -114,4 +68,4 @@ export function Flavors() {
       </div>
     </section>
   )
-} 
+}
