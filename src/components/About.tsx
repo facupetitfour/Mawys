@@ -1,6 +1,6 @@
 // import { Button } from "@/components/ui/button"
 // @ts-ignore
-import productsCloseup from "/images/products-closeup.png"
+import productsCloseup from "/images/products-closeup.webp"
 
 export function About() {
   return (
