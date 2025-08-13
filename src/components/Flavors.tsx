@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useTheme } from "@/lib/useTheme"
+
 interface Flavor {
   name: string
   lightColor: string
@@ -61,27 +62,7 @@ const flavors: Flavor[] = [
 ]
 
 export function Flavors() {
-  // Función para obtener el tema actual de forma más robusta
-  const getCurrentTheme = () => {
-    return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-  }
-  
-  // Estado local para forzar re-renderizado
-  const [currentTheme, setCurrentTheme] = useState(getCurrentTheme())
-  
-  // Escuchar cambios en el tema
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setCurrentTheme(getCurrentTheme())
-    })
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    })
-    
-    return () => observer.disconnect()
-  }, [])
+  const { theme } = useTheme()
   
   return (
     <section
@@ -112,7 +93,7 @@ export function Flavors() {
                 key={index}
                 className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-white/50 dark:border-gray-700/50 text-center py-8"
                 style={{ 
-                  backgroundColor: currentTheme === 'dark' ? flavor.darkColor : flavor.lightColor 
+                  backgroundColor: theme === 'dark' ? flavor.darkColor : flavor.lightColor 
                 }}
               >
                 <div className="p-6">
@@ -122,7 +103,7 @@ export function Flavors() {
                   <h3 
                     className="text-2xl font-bold" 
                     style={{ 
-                      color: currentTheme === 'dark' ? flavor.darkTextColor : flavor.lightTextColor 
+                      color: theme === 'dark' ? flavor.darkTextColor : flavor.lightTextColor 
                     }}
                   >
                     {flavor.name}
